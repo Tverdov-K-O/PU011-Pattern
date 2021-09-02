@@ -3,6 +3,7 @@
 #include"FactoryMethodh.h"
 #include"Singleton.h"
 #include"AbstractFactory.h"
+#include"DVD.h"
 using namespace std;
  
 int main() {
@@ -52,7 +53,7 @@ int main() {
 	Logger * log2 = Logger::getInstance();
 	log2->sendMessage("Error #1104");*/
 
-	Car * car = new Car;
+	/*Car * car = new Car;
 	CarConfigurator * configurator = new CarConfigurator;
 	configurator->setFactory(new SportCarFactory);
 	configurator->create(car);
@@ -61,7 +62,18 @@ int main() {
 	Car* bmw = new Car;
 	configurator->setFactory(new BMWFactory);
 	configurator->create(bmw);
-	bmw->print();
+	bmw->print();*/
+
+	Disk * disk = new Disk(4);
+	string data = "Konstantin";
+	DVD_Drive* drive = new DVD_Drive;
+	drive->open(disk);
+	drive->write(data);
+	drive->read();
+	
+	
+
+
 
 	system("pause");
 }
