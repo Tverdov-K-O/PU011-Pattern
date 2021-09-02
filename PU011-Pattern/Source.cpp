@@ -2,6 +2,7 @@
 #include"Builder.h"
 #include"FactoryMethodh.h"
 #include"Singleton.h"
+#include"AbstractFactory.h"
 using namespace std;
  
 int main() {
@@ -43,15 +44,24 @@ int main() {
 	transport = creator->create();
 	transport->delivery("на деревню дедушке");*/
 
-	Logger * logger = Logger::getInstance();
+	/*Logger * logger = Logger::getInstance();
 	logger->sendMessage("Error #44");
 	logger->sendMessage("Error #86");
 
 
 	Logger * log2 = Logger::getInstance();
-	log2->sendMessage("Error #1104");
+	log2->sendMessage("Error #1104");*/
 
-
+	Car * car = new Car;
+	CarConfigurator * configurator = new CarConfigurator;
+	configurator->setFactory(new SportCarFactory);
+	configurator->create(car);
+	car->print();
+	cout << endl;
+	Car* bmw = new Car;
+	configurator->setFactory(new BMWFactory);
+	configurator->create(bmw);
+	bmw->print();
 
 	system("pause");
 }

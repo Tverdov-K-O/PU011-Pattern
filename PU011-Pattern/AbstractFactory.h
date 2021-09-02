@@ -111,12 +111,59 @@ public:
 	}
 	void setEngine(Engine* e) { engine = e; }
 	void setTransmission(Transmissin* t) { transmission = t; }
-	void setEngine(BodyType* bt) { bodytype = bt; }
+	void setBodyType(BodyType* bt) { bodytype = bt; }
+	void setName(string n) { name = n; }
 	void print()
 	{
-		cout << "Name : " << name << endl;
-		cout << "Engine : " << engine->toString() << endl;
-		cout << "Transmission : " << transmission->toString() << endl;
-		cout << "BodyType : " << bodytype->toString() << endl;
+		cout << "Name		: " << name << endl;
+		cout << "Engine		: " << engine->toString() << endl;
+		cout << "Transmission	: " << transmission->toString() << endl;
+		cout << "BodyType	: " << bodytype->toString() << endl;
+	}
+};
+
+
+class ICarFactory
+{
+public:
+	virtual Engine* createEngine() = 0;
+	virtual Transmissin* createTransmissin() = 0;
+	virtual BodyType* createBodyType() = 0;
+	virtual string createName() = 0;
+
+};
+
+class SportCarFactory : public ICarFactory
+{
+public:
+	Engine*createEngine()				override { return new ElectroEngine; }
+	Transmissin* createTransmissin()	override { return new VariatorTrans; }
+	BodyType* createBodyType()			override { return new SportBodyType; }
+	string createName()					override { return "Super Mega Sport Car";}
+};
+class BMWFactory : public ICarFactory
+{
+public:
+	Engine*createEngine()				override { return new DiselEngine; }
+	Transmissin* createTransmissin()	override { return new MechTrans; }
+	BodyType* createBodyType()			override { return new SedanBodyType; }
+	string createName()					override { return "BMW"; }
+};
+
+class CarConfigurator 
+{
+	ICarFactory * factory = nullptr;
+public:
+	~CarConfigurator()
+	{
+		if (factory) delete factory;
+	}
+	void setFactory(ICarFactory* f) { factory = f; }
+	void create(Car* car) 
+	{
+		car->setEngine(factory->createEngine());
+		car->setTransmission(factory->createTransmissin());
+		car->setName(factory->createName());
+		car->setBodyType(factory->createBodyType());
 	}
 };
