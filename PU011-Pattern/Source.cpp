@@ -4,10 +4,25 @@
 #include"Singleton.h"
 #include"AbstractFactory.h"
 #include"DVD.h"
+#include"Prototype.h"
+#include"Adapter.h"
 using namespace std;
  
+
+
+
+
 int main() {
 	setlocale(0, "");
+
+	Adapter::Driver * driver = new Adapter::Driver();
+	Adapter::Car * car = new Adapter::Car();
+	driver->travel(car);
+
+	Adapter::Camel * camel = new Adapter::Camel();
+	Adapter::CamelToTransport * adapter = new Adapter::CamelToTransport(camel);
+	driver->travel(adapter);
+
 	/*Creator * creator = new TruckCreator;
 	Transport * truck = creator->create();
 	truck->delivery("IT STEP");
@@ -64,13 +79,17 @@ int main() {
 	configurator->create(bmw);
 	bmw->print();*/
 
-	Disk * disk = new Disk(4);
+	/*Disk * disk = new Disk(4);
 	string data = "Konstantin";
 	DVD_Drive* drive = new DVD_Drive;
 	drive->open(disk);
 	drive->write(data);
 	drive->read();
-	
+	*/
+
+
+
+
 	
 
 

@@ -127,9 +127,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFactory.h" />
+    <ClInclude Include="Adapter.h" />
     <ClInclude Include="Builder.h" />
     <ClInclude Include="DVD.h" />
     <ClInclude Include="FactoryMethodh.h" />
+    <ClInclude Include="Prototype.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

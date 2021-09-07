@@ -153,6 +153,7 @@ public:
 class CarConfigurator 
 {
 	ICarFactory * factory = nullptr;
+	//map<string, ICarFactory*> pool;
 public:
 	~CarConfigurator()
 	{
