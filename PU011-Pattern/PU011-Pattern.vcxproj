@@ -128,9 +128,14 @@
   <ItemGroup>
     <ClInclude Include="AbstractFactory.h" />
     <ClInclude Include="Adapter.h" />
+    <ClInclude Include="Bridge.h" />
     <ClInclude Include="Builder.h" />
+    <ClInclude Include="Composit.h" />
+    <ClInclude Include="Decorator.h" />
     <ClInclude Include="DVD.h" />
+    <ClInclude Include="Facade.h" />
     <ClInclude Include="FactoryMethodh.h" />
+    <ClInclude Include="Flyweight.h" />
     <ClInclude Include="Prototype.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>

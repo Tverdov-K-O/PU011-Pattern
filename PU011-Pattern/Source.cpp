@@ -6,6 +6,11 @@
 #include"DVD.h"
 #include"Prototype.h"
 #include"Adapter.h"
+#include"Bridge.h"
+#include"Decorator.h"
+#include"Composit.h"
+#include"Flyweight.h"
+
 using namespace std;
  
 
@@ -15,13 +20,110 @@ using namespace std;
 int main() {
 	setlocale(0, "");
 
-	Adapter::Driver * driver = new Adapter::Driver();
+
+
+	HouseFactory * factory = new HouseFactory();
+	vector<House*> houses;
+	for (size_t i = 0; i < 5; i++) {
+		houses.push_back(new House(rand() % 100, rand() % 100,factory->getHouse("Panel")));
+	}
+
+	cout << endl;
+
+	for (size_t i = 0; i < 5; i++) {
+		houses.push_back(new House(rand() % 100, rand() % 100, factory->getHouse("Brick")));
+	}
+
+	for (auto&h : houses)
+		h->print();
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*Componentt* fs = new Directory("FileSystem");
+
+	Componentt* discC = new Directory("Disc C");
+
+	Componentt* folder1 = new Directory("Folder 1");
+	Componentt* folder2 = new Directory("Folder 2");
+	Componentt* folder3 = new Directory("Folder 3");
+	Componentt* folder4 = new Directory("Folder 4");
+	Componentt* folder5 = new Directory("Folder 5");
+
+	Componentt* file1 = new File("File 1");
+	Componentt* file2 = new File("File 2");
+	Componentt* file3 = new File("File 3");
+	Componentt* file4 = new File("File 4");
+
+	fs->addComponent(discC);
+	discC->addComponent(folder1);
+	discC->addComponent(folder2);
+	discC->addComponent(file1);
+	discC->addComponent(file2);
+	folder1->addComponent(folder3);
+	folder1->addComponent(folder4);
+	folder4->addComponent(folder5);
+	folder3->addComponent(file4);
+	fs->print();*/
+
+
+
+
+
+
+	//Pizza * pizza = new ItalianPizza();
+	//pizza = new TomatoPizza(pizza); // помидоры
+	//pizza = new CheesePizza(pizza); // сыр
+
+
+	//cout << pizza->getName() << endl;
+	//cout << "Price: " << pizza->getPrice() << endl;
+
+
+
+
+
+
+	/*Programmer * freelancer = new FreeLancerProgrammer(new CPPLanguage());
+	freelancer->work();
+	freelancer->getMoney();
+	cout << endl;
+
+	freelancer->setLanguage(new CSharpLanguage());
+	freelancer->work();
+	freelancer->getMoney();
+	cout << endl;
+
+	Programmer* cmpProg = new CompanyProgrammer(new CSharpLanguage());
+	cmpProg->work();
+	cmpProg->getMoney();
+	cout << endl;
+	
+	cmpProg->setLanguage(new CPPLanguage());
+	cmpProg->work();
+	cmpProg->getMoney();
+	cout << endl;*/
+
+
+
+
+
+	/*Adapter::Driver * driver = new Adapter::Driver();
 	Adapter::Car * car = new Adapter::Car();
 	driver->travel(car);
 
 	Adapter::Camel * camel = new Adapter::Camel();
 	Adapter::CamelToTransport * adapter = new Adapter::CamelToTransport(camel);
-	driver->travel(adapter);
+	driver->travel(adapter);*/
 
 	/*Creator * creator = new TruckCreator;
 	Transport * truck = creator->create();
